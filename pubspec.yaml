@@ -1,0 +1,21 @@
+name: rotary_dial
+description: A smooth, customizable rotary dial widget for Flutter that emulates a classic telephone dial. Supports custom themes, gestures, and animations.
+version: 1.0.0
+homepage: https://github.com/baljinder/rotary_dial
+repository: https://github.com/baljinder/rotary_dial
+issue_tracker: https://github.com/baljinder/rotary_dial/issues
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.10.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
