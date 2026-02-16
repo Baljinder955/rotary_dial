@@ -3,17 +3,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 /// Public widget
+/// A customizable rotary dial widget for Flutter.
+///
+/// This widget emulates a classic rotary phone dialer with realistic physics,
+/// sound effects, and customizable styling.
 class RotaryDial extends StatefulWidget {
+  /// The size of the rotary dial. If null, it will be determined by the constraints.
   final double? size;
+
+  /// Callback triggered when a digit is successfully dialed and registered.
   final ValueChanged<String> onDigitSelected;
 
-  /// Full UI customization in one place
+  /// Theme customization for the rotary dial colors, sizes, and behaviors.
   final RotaryDialTheme theme;
 
-  /// Haptic feedback toggle
+  /// Specific flag to enable or disable haptic feedback during rotation.
+  /// Defaults to true.
   final bool enableHaptics;
 
-  /// Callback when the dial is rotated (useful for custom sound effects)
+  /// Callback triggered when the dial is rotated.
+  /// This can be used to play custom sound effects or trigger other actions on tick.
   final VoidCallback? onDialRotate;
 
   const RotaryDial({
@@ -290,80 +299,163 @@ class _RotaryDialState extends State<RotaryDial>
 }
 
 /// All UI controls live here.
-/// This makes it perfect for pub.dev as a dependency.
+/// Theme data for customizing the visual appearance and behavior of the [RotaryDial].
+///
+/// This class provides granular control over colors, gradients, stroke widths,
+/// sizing factors, text styles, and animation parameters.
 @immutable
 class RotaryDialTheme {
   // ===== COLORS =====
+
+  /// Fill color for the static base circle (Layer 1).
   final Color baseFillColor;
+
+  /// Optional gradient for the base circle. If provided, it overrides [baseFillColor].
   final Gradient? baseGradient;
+
+  /// Color of the outline stroke for the base circle.
   final Color baseOutlineColor;
 
+  /// Fill color for the center circle (where the active digit is displayed).
   final Color centerFillColor;
+
+  /// Color of the outline stroke for the center circle.
   final Color centerOutlineColor;
 
+  /// Fill color for the rotating ring (Layer 2).
   final Color ringFillColor;
+
+  /// Color of the outline stroke for the rotating ring.
   final Color ringOutlineColor;
 
-  /// Optional gradient for the ring. When non-null, overrides ringFillColor.
+  /// Optional gradient for the ring. When non-null, overrides [ringFillColor].
   final Gradient? ringGradient;
 
+  /// Color of the numbers on the base dial.
   final Color numberColor;
+
+  /// Color of the number when it is currently being dialed (active).
   final Color activeNumberColor;
+
+  /// Color of the text displayed in the center of the dial.
+  /// If null, defaults to [baseFillColor].
   final Color? centerDigitColor;
 
+  /// Color of the stop dot.
   final Color dotColor;
 
+  /// Color of the outline for the digit holes on the ring.
   final Color holeOutlineColor;
+
+  /// Color of the outline for the digit hole that is currently active/selected.
   final Color activeHoleOutlineColor;
 
+  /// Color used for the glow effect on active elements (numbers and holes).
   final Color activeGlowColor;
 
   // ===== STROKES =====
+
+  /// Stroke width for the base circle outline.
   final double baseOutlineStrokePx;
+
+  /// Stroke width for the center circle outline.
   final double centerOutlineStrokePx;
+
+  /// Stroke width for the ring outline.
   final double ringOutlineStrokePx;
+
+  /// Stroke width for the digit hole outlines.
   final double holeOutlineStrokePx;
+
+  /// Stroke width for the active digit hole outline.
   final double activeHoleOutlineStrokePx;
 
   // ===== SIZING FACTORS =====
+
+  /// Factor determining the outer radius of the dial elements relative to the widget size.
+  /// Range: 0.0 to 1.0 (default 0.98).
   final double outerRadiusFactor;
+
+  /// Factor determining the inner radius (hole for the center) relative to the widget size.
+  /// Range: 0.0 to 1.0 (default 0.45).
   final double innerRadiusFactor;
 
+  /// Factor determining the distance of numbers from the center.
   final double numberDistanceFactor;
+
+  /// Factor determining the size of the numbers.
   final double numberSizeFactor;
 
+  /// Factor determining the radius of the stop dot.
   final double dotRadiusFactor;
 
+  /// Factor scaling the width of the digit holes.
+  /// Width is calculated based on number size + [holeExtraWidthPx].
   final double holeWidthFactor;
+
+  /// Factor scaling the height of the digit holes.
   final double holeHeightFactor;
+
+  /// Extra pixel width added to the hole calculation before scaling.
   final double holeExtraWidthPx;
 
   // ===== TEXT =====
+
+  /// Text style for the numbers on the dial.
   final TextStyle numberTextStyle;
+
+  /// Text style for the digit displayed in the center.
   final TextStyle centerTextStyle;
 
   // ===== ACTIVE EFFECTS =====
+
+  /// Whether to enable the glow effect for the active digit and hole.
   final bool enableActiveGlow;
+
+  /// Sigma (blur radius) for the active number glow.
   final double activeNumberGlowSigma;
+
+  /// Sigma (blur radius) for the active hole glow.
   final double activeHoleGlowSigma;
+
+  /// Factor scaling the radius of the glow behind the active number.
   final double activeNumberGlowRadiusFactor;
 
   // ===== GESTURE TUNING =====
+
+  /// The angular window (in radians) to detect which digit is being touched.
   final double digitTouchAngleWindow;
 
+  /// Minimum radius factor (relative to half width) for detecting gestures.
   final double gestureMinRadiusFactor;
+
+  /// Maximum radius factor (relative to half width) for detecting gestures.
   final double gestureMaxRadiusFactor;
 
+  /// Minimum radius factor to cancel a drag operation.
   final double dragCancelMinRadiusFactor;
+
+  /// Maximum radius factor to cancel a drag operation.
   final double dragCancelMaxRadiusFactor;
 
   // ===== RETURN ANIMATION =====
+
+  /// Base duration (in ms) for the return animation.
   final int returnBaseMs;
+
+  /// Extra duration (in ms) added scaling with the rotation distance.
   final int returnExtraMs;
+
+  /// Minimum duration (in ms) for the return animation.
   final int returnMinMs;
+
+  /// Maximum duration (in ms) for the return animation.
   final int returnMaxMs;
+
+  /// Curve used for the return animation.
   final Curve returnCurve;
 
+  /// Creates a [RotaryDialTheme].
   const RotaryDialTheme({
     // colors
     this.baseFillColor = Colors.black,
