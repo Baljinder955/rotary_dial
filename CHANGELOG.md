@@ -15,5 +15,5 @@
 
 ## 1.0.3
 
-* Added demo preview in README (GIF + video link).
+* Added demo preview in README (GIF).
 * Improved documentation for better package understanding.
