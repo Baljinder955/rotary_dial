@@ -12,3 +12,8 @@
 
 * Fixed pubspec links (homepage, repository, issue tracker).
 * Minor documentation improvements.
+
+## 1.0.3
+
+* Added demo preview in README (GIF + video link).
+* Improved documentation for better package understanding.

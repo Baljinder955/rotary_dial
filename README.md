@@ -2,6 +2,8 @@
 
 A smooth, customizable rotary dial widget for Flutter that emulates the behavior of a classic rotary telephone.
 
+![Demo](assets/demo.gif)
+
 ## Features
 
 - **Realistic Physics**: Smooth rotation with spring-back animation.
@@ -16,7 +18,7 @@ Add the package to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  rotary_dial: ^1.0.0
+  rotary_dial: ^1.0.3
 ```
 
 ## Usage
