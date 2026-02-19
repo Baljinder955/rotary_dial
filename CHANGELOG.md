@@ -7,3 +7,8 @@
 
 * Added homepage/repository links.
 * Improved API documentation.
+
+## 1.0.2
+
+* Fixed pubspec links (homepage, repository, issue tracker).
+* Minor documentation improvements.
