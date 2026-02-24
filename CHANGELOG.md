@@ -17,3 +17,8 @@
 
 * Added demo preview in README (GIF).
 * Improved documentation for better package understanding.
+
+## 1.0.4
+
+* Added `size` property in README.
+* Added all customization properties in README.
